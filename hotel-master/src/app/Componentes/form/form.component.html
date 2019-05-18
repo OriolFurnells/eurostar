@@ -1,0 +1,28 @@
+<div class="container" >
+    <h2>Resultado búsqueda</h2>
+
+    <form #projectForm="ngForm" (ngSubmit)="onSubmit(objetoForm)">
+        <p>
+            <label for="ciudad in ciudadesOrigen" name="ciudadOrigen">Ciudad Origen</label>
+            <span class="form_error" *ngIf="ciudadOrigen.touched && !ciudadOrigen.valid">
+                ¿De donde vienes?</span>
+            <label for="ciudad in ciudadesDestino" name="ciudadesDestino">Ciudad Destino</label>
+            <span class="form_error" *ngIf="ciudadesDestino.touched && !ciudadesDestino.valid">
+                ¿A donde vas? </span>
+        </p>
+        <p>
+            <label name="diaSalida"> Día de salida <input type="text" ngbDatepicker (dateSelect)="onDateSelect($event)"/></label>
+            <span class="form_error" *ngIf="diaSalida.touched && !diaSalida.valid">
+                ¿Que día te quieres ir?</span>
+            <label name="diaLlegada"> Día de llegada <input type="text" ngbDatepicker (dateSelect)="onDateSelect($event)"/></label>
+            <span class="form_error" *ngIf="diaLlegada.touched && !diaLlegada.valid">
+                ¿Que día quieres volver? </span>
+        </p>
+        <p>
+           <label name="passengers"> ¿Cuantos pasajeros soys? <input type="number"></label>
+        </p>
+
+        
+        <input type="submit" value="Enviar" [disabled]="!projectForm.form.valid" />
+    </form>
+</div>
